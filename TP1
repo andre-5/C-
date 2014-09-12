@@ -36,22 +36,23 @@ int main(void)
     if (reponse == true) {
         do {
             cpt = cpt + 1;
-            cout << "Quelle est la valeur #" << cpt << " ?" << endl;
+            cout << "Quelle est la valeur #" << cpt << "?" << endl;
             cin >> val;
             somme = val + somme;
             
-            if (val >= max) {
+            if (val == max) {
                 cptmax = cptmax + 1;
             }
             else if (val > max) {
                 max = val;
             }
             
-            if (val < min) {
-                val = min;
+            if (val == min) {
                 cptmin = cptmin + 1;
             }
-            
+            else if (val < min) {
+                min = val;
+            }
         } while (val != 0);
         
        moyenne = somme / (cpt - 1);
@@ -61,11 +62,9 @@ int main(void)
     cout << "Le min était " << min << " et a été utilisé " << cptmin << endl;
     
     }
-    
     else {
         cout << "Dommage, une autre fois peut-être?" << endl;
     }
-  
     //system("PAUSE");
     return 0;
 }
