@@ -1,0 +1,71 @@
+/*Écrivez un algorithme qui demande à l’utilisateur s’il veut additionner des nombres. 
+Dans l’affirmative, il faut lui demander une valeur à la fois jusqu’à ce qu’il inscrive 0. 
+Il faudra utiliser la formulation suivante « Quelle est la valeur #1? », 
+calculer la somme et la moyenne des nombres sans toutefois les retenir. 
+De plus, il faudra également indiquer la plus grande valeur et la plus petite.
+À la fin, il faudra également indiquer combien de fois la valeur minimale a été utilisée ainsi que la valeur maximale.*/
+
+//
+//  Travail Pratique #1
+//
+//  Créé par André Dasté.
+//  Copyright (c) 2014 André Dasté. Tous droits réservés.
+//
+
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main(void)
+{
+    int val, max, min, somme, moyenne, cpt, cptmax, cptmin;
+    bool reponse;
+    
+    cout << "Voulez-vous faire une addition (1 = oui, 0 = non)?" << endl;
+    cin >> reponse;
+    
+    min = 0;
+    max = 0;
+    somme = 0;
+    moyenne = 0;
+    cpt = 0;
+    cptmin = 0;
+    cptmax = 0;
+    
+    if (reponse == true) {
+        do {
+            cpt = cpt + 1;
+            cout << "Quelle est la valeur #" << cpt << " ?" << endl;
+            cin >> val;
+            somme = val + somme;
+            
+            if (val >= max) {
+                cptmax = cptmax + 1;
+            }
+            else if (val > max) {
+                max = val;
+            }
+            
+            if (val < min) {
+                val = min;
+                cptmin = cptmin + 1;
+            }
+            
+        } while (val != 0);
+        
+       moyenne = somme / (cpt - 1);
+     
+    cout << "La somme des " << cpt << " variables est de " << somme << " et la moyenne est de " << moyenne << endl;
+    cout << "Le max fut " << max << " et a été utilisé " << cptmax << endl;
+    cout << "Le min était " << min << " et a été utilisé " << cptmin << endl;
+    
+    }
+    
+    else {
+        cout << "Dommage, une autre fois peut-être?" << endl;
+    }
+  
+    //system("PAUSE");
+    return 0;
+}
